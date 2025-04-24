@@ -1,9 +1,66 @@
 <!DOCTYPE html>
   <head>
-  </head>
-  <body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Exemplo</title>
+    <style>
+        /* Estilo simples para o formulário */
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Formulário de Contato</h2>
+
+    <!-- Formulário -->
+    <form id="bananinha" action="/enviar" method="POST">
+        <label for="name">Seu Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="name">Seu Primeiro Nome:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="email">Seu E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="cargo">Seu Cargo:</label>
+        <input type="job_title" id="job_title" name="job_title" required>
+
+        <input type="submit" value="Enviar">
+    </form>
     <!-- -->
     <!-- staging -->
     <script type="text/javascript" async src="https://d2umgtt5tsqx05.cloudfront.net/js/loader-scripts/46f1bba1-0677-443d-8397-3d2015092240-loader.js" ></script>
-  </body>
+</body>
 </html>
