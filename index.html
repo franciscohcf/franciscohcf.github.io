@@ -59,6 +59,25 @@
 
         <input type="submit" value="Enviar">
     </form>
+    <form action="/submit" method="POST" id="test-form">
+        <!-- Blank name -->
+        <input type="text" placeholder="Name"><br>
+
+        <!-- Reserved word as name -->
+        <input type="text" name="submit" placeholder="Job Title"><br>
+
+        <!-- Duplicate name -->
+        <input type="email" name="email" placeholder="Email Address"><br>
+        <input type="text" name="email" placeholder="Confirm Email"><br>
+
+        <!-- Hidden input with empty value -->
+        <input type="hidden" name="tracking_id" value=""><br>
+
+        <!-- Valid input for reference -->
+        <input type="text" name="first_name" placeholder="First Name"><br>
+
+        <button type="submit">Submit</button>
+    </form>
     <!-- -->
     <!-- staging -->
     <script type="text/javascript" async src="https://d2umgtt5tsqx05.cloudfront.net/js/loader-scripts/46f1bba1-0677-443d-8397-3d2015092240-loader.js" ></script>
