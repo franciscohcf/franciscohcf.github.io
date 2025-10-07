@@ -169,7 +169,7 @@
     </style>
 </head>
 <body>
-    <form action="cadastro_layout.php?loja=1147919&amp;incluir=1" method="post" name="frm2" id="frm2">
+    <form action="#" method="post" name="frm2" id="frm2" onsubmit="return handleFormSubmit(event)">
         <input name="international" value="" type="hidden">
 
         <div class="board">
@@ -273,7 +273,7 @@
         
         <div class="board termContainerRegister">
             <p class="termText">Ao continuar você concorda com nossa<a href="/politica-de-privacidade-ext-10-1147919.htm" class="color-tone-10" id="privacityTermElement" target="__blank"> política de privacidade.</a></p>
-            <button class="botao-commerce botao-prosseguir-cadastro right btn_submit" type="button" onclick="storeReCaptcha.submit()"><span class="botao-commerce-img">Avançar</span></button>
+            <button class="botao-commerce botao-prosseguir-cadastro right btn_submit" type="submit"><span class="botao-commerce-img">Avançar</span></button>
         </div>
     </form>
 
@@ -364,48 +364,55 @@
             }
         }
 
-        let storeReCaptcha = {
-            submit: function() {
-                // Basic form validation
-                let isValid = true;
-                let requiredFields = ['pf_nome_cliente', 'pf_cpf_cliente', 'email_cliente', 'email_cliente2', 'senha_cliente', 'senha_cliente2'];
-                
-                requiredFields.forEach(function(fieldId) {
-                    let field = document.getElementById(fieldId);
-                    if (!field.value.trim()) {
-                        field.style.borderLeft = '3px solid #e74c3c';
-                        isValid = false;
-                    }
-                });
-                
-                // Check if at least one phone is provided
-                let telefone1 = document.getElementById('telefone_cliente').value;
-                let telefone2 = document.getElementById('telefone_cliente_2').value;
-                if (!telefone1.trim() && !telefone2.trim()) {
-                    document.getElementById('telefone_cliente_erro_2').style.display = 'block';
-                    document.getElementById('telefone_cliente_erro_2').textContent = 'Ao menos um telefone deve ser informado';
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            let requiredFields = ['pf_nome_cliente', 'pf_cpf_cliente', 'email_cliente', 'email_cliente2', 'senha_cliente', 'senha_cliente2'];
+            
+            requiredFields.forEach(function(fieldId) {
+                let field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.style.borderLeft = '3px solid #e74c3c';
                     isValid = false;
-                } else {
-                    document.getElementById('telefone_cliente_erro_2').style.display = 'none';
                 }
-                
-                // Check email match
-                let email1 = document.getElementById('email_cliente').value;
-                let email2 = document.getElementById('email_cliente2').value;
-                if (email1 !== email2) {
-                    document.getElementById('email_cliente2_erro').style.display = 'block';
-                    document.getElementById('email_cliente2_erro').textContent = 'Os e-mails não coincidem';
-                    isValid = false;
-                } else {
-                    document.getElementById('email_cliente2_erro').style.display = 'none';
-                }
-                
-                if (isValid) {
-                    document.getElementById('frm2').submit();
-                }
+            });
+            
+            let telefone1 = document.getElementById('telefone_cliente').value;
+            let telefone2 = document.getElementById('telefone_cliente_2').value;
+            if (!telefone1.trim() && !telefone2.trim()) {
+                document.getElementById('telefone_cliente_erro_2').style.display = 'block';
+                document.getElementById('telefone_cliente_erro_2').textContent = 'Ao menos um telefone deve ser informado';
+                isValid = false;
+            } else {
+                document.getElementById('telefone_cliente_erro_2').style.display = 'none';
             }
-        };
+            
+            let email1 = document.getElementById('email_cliente').value;
+            let email2 = document.getElementById('email_cliente2').value;
+            if (email1 !== email2) {
+                document.getElementById('email_cliente2_erro').style.display = 'block';
+                document.getElementById('email_cliente2_erro').textContent = 'Os e-mails não coincidem';
+                isValid = false;
+            } else {
+                document.getElementById('email_cliente2_erro').style.display = 'none';
+            }
+            
+            if (isValid) {
+                alert('Formulário enviado com sucesso!\n\nDados coletados:\n' + JSON.stringify(getFormData(), null, 2));
+            }
+            
+            return false;
+        }
+        
+        function getFormData() {
+            let formData = new FormData(document.getElementById('frm2'));
+            let data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            return data;
+        }
     </script>
-    <script type="text/javascript" async src="https://d2umgtt5tsqx05.cloudfront.net/js/loader-scripts/46f1bba1-0677-443d-8397-3d2015092240-loader.js" ></script>
 </body>
 </html>
