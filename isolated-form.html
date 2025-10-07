@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .board {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .color {
+            color: #333;
+        }
+        
+        .txt-dados-pessoais, .txt-dados-loja {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .obriga {
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .red {
+            color: #e74c3c;
+        }
+        
+        .text {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .opcional {
+            border-left: 3px solid #95a5a6;
+        }
+        
+        .check {
+            margin-right: 5px;
+        }
+        
+        .mensagensErro {
+            color: #e74c3c;
+            font-size: 12px;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        .estrela {
+            color: #e74c3c;
+        }
+        
+        .cadastro_label {
+            font-weight: bold;
+        }
+        
+        .topBorder {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+        
+        .leftCorner {
+            height: 1px;
+        }
+        
+        .termContainerRegister {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .termText {
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .color-tone-10 {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .color-tone-10:hover {
+            text-decoration: underline;
+        }
+        
+        .botao-commerce {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .botao-commerce:hover {
+            background-color: #2980b9;
+        }
+        
+        .botao-prosseguir-cadastro {
+            margin-left: auto;
+        }
+        
+        .right {
+            float: right;
+        }
+        
+        .botao-commerce-img {
+            display: inline-block;
+        }
+        
+        fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        strong {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        #seguranca_senha {
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .termContainerRegister {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .botao-prosseguir-cadastro {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="cadastro_layout.php?loja=1147919&amp;incluir=1" method="post" name="frm2" id="frm2">
+        <input name="international" value="" type="hidden">
+
+        <div class="board">
+            <div>
+                <span id="tit_cadastro_pf" style="display:;;">
+                    <h2 class="color txt-dados-pessoais">
+                        <span>Dados Pessoais</span>
+                    </h2>
+                </span>
+                <span id="tit_cadastro_pj" style="display:none;;">
+                    <h2 class="color txt-dados-loja">
+                        <span>Dados da Empresa</span>
+                    </h2>
+                </span>
+            </div>
+
+            <input type="hidden" name="origem" id="origem" value="">
+            <input type="hidden" name="IdProd" id="IdProd" value="">
+            <input type="hidden" name="premiacao" id="premiacao" value="">
+            <input type="hidden" name="id_evento" id="id_evento" value="">
+            <input type="hidden" name="flagPfPj" id="flagPfPj" value="0">
+            <input type="hidden" name="cpf_gravado" id="cpf_gravado" value="">
+            <input type="hidden" name="cnpj_gravado" id="cnpj_gravado" value="">
+            <input type="hidden" name="redirecionar" value="">
+            <input type="hidden" name="terms" value="1">
+            
+            <fieldset>
+                Campos marcados com <span class="obriga red">&nbsp;barra</span> são de preenchimento obrigatório
+                
+                <div id="juridica" style="display: none">
+                    <p>
+                        <label>*Razão Social:<br>
+                            <input type="text" name="razao_social" id="razao_social" onkeypress="volta_input(this.id)" value="" size="50" maxlength="200" class="text obriga"></label>
+                        <span id="razao_social_erro" class="mensagensErro" style="display: none"></span><br>
+
+                        <label>*Inscrição Estadual:<br>
+                            <input type="text" name="ie" id="ie" onkeypress="volta_input(this.id)" value="" size="30" maxlength="18" class="text obriga"></label>
+                        <span id="ie_erro" class="mensagensErro" style="display: none"></span><br>
+                        
+                        <label><span class="cadastro_label cadastro_label_cpfcnpj"><span class="estrela">*</span>CNPJ:</span><br>
+                        <input type="tel" name="cnpj" id="cnpj" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); FormataCNPJ(this,event);" onfocusout="FormataCNPJ(this,event);" onkeyup="volta_input_classe(this.id,'text obriga'); FormataCNPJ(this,event);" size="50" maxlength="18" value="" class="text obriga"> </label><span id="cnpj_erro" class="mensagensErro" style="display: none"></span>
+                    </p>
+
+                    <p>
+                        <label>*Nome Completo:<br>
+                            <input type="text" name="pj_nome_cliente" id="pj_nome_cliente" maxlength="200" onkeypress="volta_input(this.id)" value="" size="50" class="text obriga"></label><span id="pj_nome_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                        <label>Data Nascimento:<br>
+                            <input type="tel" name="pj_data_nascimento" id="pj_data_nascimento" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,data2,event);" value="" size="10" maxlength="10" onkeypress="volta_input_classe(this.id, 'text opcional'); mascara(this,data2,event)" class="text opcional"> (Opcional)</label><span id="pj_data_nascimento_erro" class="mensagensErro" style="display: none"></span><br>
+
+                        <label><span class="cadastro_label cadastro_label_cpfcnpj estado"><span class="estrela">*</span>CPF:</span><br>
+                            <input type="tel" name="pj_cpf_cliente" id="pj_cpf_cliente" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,cpf,event);" onkeypress="mascara(this,cpf,event);" size="20" maxlength="14" value="" class="text obriga"> </label><span id="pj_cpf_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                    </p>
+                </div>
+
+                <div id="fisica" style="display: ">
+                    <p>
+                        <label>*Nome Completo:<br>
+                            <input type="text" name="pf_nome_cliente" id="pf_nome_cliente" maxlength="200" onkeypress="volta_input(this.id)" value="" size="50" class="text obriga"></label><span id="pf_nome_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                        <label>Data Nascimento:<br>
+                            <input type="tel" name="pf_data_nascimento" id="pf_data_nascimento" value="" size="10" maxlength="10" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,data2,event);" onkeypress="volta_input_classe(this.id, 'text opcional'); mascara(this,data2,event);" class="text opcional"> (Opcional)<span id="pf_data_nascimento_erro" class="mensagensErro" style="display: none"></span></label><br>
+
+                        <label><span class="cadastro_label cadastro_label_cpfcnpj"><span class="estrela">*</span>CPF:</span><br>
+                            <input type="tel" name="pf_cpf_cliente" id="pf_cpf_cliente" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,cpf,event);" onfocus="" onkeypress="mascara(this,cpf,event); volta_input_classe(this.id,'text obriga')" size="20" maxlength="14" value="" class="text obriga"> </label>
+                        <span id="pf_cpf_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                    </p>
+                </div>
+                
+                <strong>Ao menos um telefone deve ser informado: </strong><br>
+                <label>Telefone Fixo ou Comercial:<br>
+                    <input type="tel" name="telefone_cliente" id="telefone_cliente" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,telefone,event)" onkeypress="volta_input(this.id,'1'); mascara(this,telefone,event)" value="" size="14" maxlength="14" class="text opcional"> (##) ####-####</label><span id="telefone_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                <label>Telefone Celular:<br>
+                    <input type="tel" name="telefone_cliente_2" id="telefone_cliente_2" onpaste="event.preventDefault(); event.srcElement.value = (event.originalEvent || event).clipboardData.getData('text/plain'); mascara(this,telefonec,event)" onkeypress="mascara(this,telefonec,event); volta_input(this.id,1); volta_telefones()" value="" size="14" maxlength="14" class="text opcional"> (##) #####-####</label><span id="telefone_cliente_2_erro" class="mensagensErro" style="display: none"></span><br>
+                <span id="telefone_cliente_erro_2" class="mensagensErro" style="display: none"></span><br>
+                
+                <label>E-mail:<br>
+                    <input type="email" name="email_cliente" id="email_cliente" maxlength="100" onkeypress="volta_input(this.id)" value="" size="40" class="text obriga"></label>
+                <span id="email_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                <label>*Digite novamente:<br>
+                    <input type="email" name="email_cliente2" id="email_cliente2" maxlength="100" onkeypress="volta_input(this.id)" value="" size="40" class="text obriga"></label>
+                <span id="email_cliente2_erro" class="mensagensErro" style="display: none"></span><br>
+                <label>
+                    <input type="checkbox" name="email" id="email" value="S" class="check" checked=""> Desejo receber e-mails promocionais</label>
+
+                <p>
+                    <label>*Crie sua <strong>Senha de acesso:</strong><br>
+                        <input type="password" name="senha_cliente" id="senha_cliente" onfocusout="verificaSenhaValida(false)" onkeypress="volta_input(this.id)" onkeyup="TestaSenha(this.value);" value="" size="20" maxlength="100" class="text obriga" autocomplete="off"></label> <span id="seguranca_senha"></span><span id="senha_cliente_erro" class="mensagensErro" style="display: none"></span><br>
+                    <label>*Digite novamente:<br>
+                        <input type="password" name="senha_cliente2" id="senha_cliente2" onkeypress="volta_input(this.id)" onblur="verificaSenhaValida(false)" value="" size="20" maxlength="100" class="text obriga" autocomplete="off"></label><span id="senha_cliente2_erro" class="mensagensErro" style="display: none"></span>
+                </p>
+            </fieldset>
+
+            <input type="hidden" name="adicionais_obrig_pf" id="adicionais_obrig_pf" value="">
+            <input type="hidden" name="adicionais_obrig_pj" id="adicionais_obrig_pj" value="">
+            <input type="hidden" name="adicionais_obrig_both" id="adicionais_obrig_both" value="">
+            <input type="hidden" name="pais" id="pais" value="Brasil">
+        </div>
+        
+        <div class="topBorder">
+            <div class="leftCorner"></div>
+        </div>
+        
+        <div class="board termContainerRegister">
+            <p class="termText">Ao continuar você concorda com nossa<a href="/politica-de-privacidade-ext-10-1147919.htm" class="color-tone-10" id="privacityTermElement" target="__blank"> política de privacidade.</a></p>
+            <button class="botao-commerce botao-prosseguir-cadastro right btn_submit" type="button" onclick="storeReCaptcha.submit()"><span class="botao-commerce-img">Avançar</span></button>
+        </div>
+    </form>
+
+    <script>
+        function volta_input(id) {
+            document.getElementById(id).style.borderLeft = '3px solid #95a5a6';
+        }
+
+        function volta_input_classe(id, classe) {
+            document.getElementById(id).className = classe;
+        }
+
+        function volta_telefones() {
+            // Function to handle phone validation
+        }
+
+        function FormataCNPJ(campo, evento) {
+            let valor = campo.value.replace(/\D/g, '');
+            if (valor.length <= 14) {
+                valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+                valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+                valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+                valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+            }
+            campo.value = valor;
+        }
+
+        function mascara(campo, tipo, evento) {
+            let valor = campo.value.replace(/\D/g, '');
+            
+            if (tipo === 'cpf') {
+                if (valor.length <= 11) {
+                    valor = valor.replace(/^(\d{3})(\d)/, '$1.$2');
+                    valor = valor.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+                    valor = valor.replace(/\.(\d{3})(\d)/, '.$1-$2');
+                }
+            } else if (tipo === 'data2') {
+                if (valor.length <= 8) {
+                    valor = valor.replace(/^(\d{2})(\d)/, '$1/$2');
+                    valor = valor.replace(/^(\d{2})\/(\d{2})(\d)/, '$1/$2/$3');
+                }
+            } else if (tipo === 'telefone') {
+                if (valor.length <= 10) {
+                    valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
+                    valor = valor.replace(/^(\d{2}) \((\d{4})(\d)/, '($1) $2-$3');
+                }
+            } else if (tipo === 'telefonec') {
+                if (valor.length <= 11) {
+                    valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
+                    valor = valor.replace(/^(\d{2}) \((\d{5})(\d)/, '($1) $2-$3');
+                }
+            }
+            
+            campo.value = valor;
+        }
+
+        function verificaSenhaValida(showMessage) {
+            let senha = document.getElementById('senha_cliente').value;
+            let senha2 = document.getElementById('senha_cliente2').value;
+            
+            if (senha !== senha2 && senha2.length > 0) {
+                document.getElementById('senha_cliente2_erro').style.display = 'block';
+                document.getElementById('senha_cliente2_erro').textContent = 'As senhas não coincidem';
+            } else {
+                document.getElementById('senha_cliente2_erro').style.display = 'none';
+            }
+        }
+
+        function TestaSenha(senha) {
+            let seguranca = document.getElementById('seguranca_senha');
+            let forca = 0;
+            
+            if (senha.length >= 6) forca++;
+            if (senha.match(/[a-z]/)) forca++;
+            if (senha.match(/[A-Z]/)) forca++;
+            if (senha.match(/[0-9]/)) forca++;
+            if (senha.match(/[^a-zA-Z0-9]/)) forca++;
+            
+            if (forca < 2) {
+                seguranca.textContent = 'Senha fraca';
+                seguranca.style.color = '#e74c3c';
+            } else if (forca < 4) {
+                seguranca.textContent = 'Senha média';
+                seguranca.style.color = '#f39c12';
+            } else {
+                seguranca.textContent = 'Senha forte';
+                seguranca.style.color = '#27ae60';
+            }
+        }
+
+        let storeReCaptcha = {
+            submit: function() {
+                // Basic form validation
+                let isValid = true;
+                let requiredFields = ['pf_nome_cliente', 'pf_cpf_cliente', 'email_cliente', 'email_cliente2', 'senha_cliente', 'senha_cliente2'];
+                
+                requiredFields.forEach(function(fieldId) {
+                    let field = document.getElementById(fieldId);
+                    if (!field.value.trim()) {
+                        field.style.borderLeft = '3px solid #e74c3c';
+                        isValid = false;
+                    }
+                });
+                
+                // Check if at least one phone is provided
+                let telefone1 = document.getElementById('telefone_cliente').value;
+                let telefone2 = document.getElementById('telefone_cliente_2').value;
+                if (!telefone1.trim() && !telefone2.trim()) {
+                    document.getElementById('telefone_cliente_erro_2').style.display = 'block';
+                    document.getElementById('telefone_cliente_erro_2').textContent = 'Ao menos um telefone deve ser informado';
+                    isValid = false;
+                } else {
+                    document.getElementById('telefone_cliente_erro_2').style.display = 'none';
+                }
+                
+                // Check email match
+                let email1 = document.getElementById('email_cliente').value;
+                let email2 = document.getElementById('email_cliente2').value;
+                if (email1 !== email2) {
+                    document.getElementById('email_cliente2_erro').style.display = 'block';
+                    document.getElementById('email_cliente2_erro').textContent = 'Os e-mails não coincidem';
+                    isValid = false;
+                } else {
+                    document.getElementById('email_cliente2_erro').style.display = 'none';
+                }
+                
+                if (isValid) {
+                    document.getElementById('frm2').submit();
+                }
+            }
+        };
+    </script>
+</body>
+</html>
