@@ -61,8 +61,16 @@
       <button type="submit">Enviar</button>
     </form>
 
-<form method="get" id="ContactFooterTest" class="footer__newsletter newsletter-form">
+<!-- 
+  INÍCIO DO FORMULÁRIO DE TESTE
+  Este formulário é uma cópia da sua estrutura original, mas sem o hCaptcha.
+  Use-o para verificar se a integração funciona sem a validação de segurança.
+-->
+<form method="post" action="#" id="ContactFooterTest2" class="footer__newsletter newsletter-form">
+  
+  <h2>Teste de Integração de Newsletter</h2>
 
+  <!-- Campos ocultos mantidos para simular o original -->
   <input type="hidden" name="form_type" value="customer">
   <input type="hidden" name="utf8" value="✓">
   <input type="hidden" name="contact[tags]" value="newsletter">
@@ -70,21 +78,28 @@
   <div class="newsletter-form__field-wrapper">
     <div class="field">
       
-      <label for="NewsletterTestForm-email-get">E-mail</label>
+      <!-- O campo de e-mail mantém a estrutura de nome original para o teste -->
+      <label for="NewsletterTestForm-email">E-mail</label>
       <input 
-        id="NewsletterTestForm-email-get" 
+        id="NewsletterTestForm-email" 
         type="email" 
         name="contact[email]" 
         class="field__input" 
         placeholder="E-mail de teste" 
         required>
 
+      <!-- O botão de submit é mantido como o original -->
       <button type="submit" class="newsletter-form__button field__button">
+        Enviar Teste
       </button>
 
     </div>
   </div>
+
+  <!-- O bloco do h-captcha foi completamente removido daqui -->
+
 </form>
+<!-- FIM DO FORMULÁRIO DE TESTE -->
 
     <!-- -->
     <!-- -->
