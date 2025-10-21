@@ -68,40 +68,22 @@
 
 
 
-      <form id="formDeTesteCaptcha" name="formulario-com-captcha">
+      <form id="formDeTesteCaptcha-invisible" name="formulario-com-captcha-invisible">
         
         <div>
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" placeholder="seu-email@teste.com" required>
+            <input type="email" id="email" name="email" placeholder="invisible" required>
         </div>
         
         <br>
 
-        <div class="h-captcha" data-sitekey="10000000-0000-0000-0000-000000000001"></div>
+        <div class="h-captcha" data-sitekey="10000000-0000-0000-0000-000000000001" data-size="invisible">></div>
 
         <br>
         
         <button type="submit">Enviar Teste</button>
     </form>
     
-
-
-
-    <script>
-        document.getElementById('formDeTesteCaptcha').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            const captchaResponse = this.querySelector('[name="h-captcha-response"]').value;
-
-            if (captchaResponse) {
-                console.log('hCaptcha resolvido! Token:', captchaResponse);
-                alert('Formulário enviado com sucesso (do ponto de vista do navegador)! Agora, verifique a plataforma da RD Station.');
-            } else {
-                console.error('hCaptcha não foi resolvido.');
-                alert('Erro: Por favor, resolva o Captcha antes de enviar.');
-            }
-        });
-    </script>
 
 
   
