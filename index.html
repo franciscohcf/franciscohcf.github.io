@@ -51,38 +51,51 @@
          <input type="submit" value="Enviar" />
     </form>
 
-    <form name="formulario_1">
-      <input type="email" name="email">
-      <button type="submit">Enviar</button>
-    </form>
-
-    <form name="formulario_2">
-      <input type="email" name="contact[email]">
-      <button type="submit">Enviar</button>
-    </form>
 
 
 
 
-
-
-
-
-      <form id="formDeTesteCaptcha-invisible" name="formulario-com-captcha-invisible">
-        
-        <div>
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" placeholder="invisible" required>
+      <form method="post" action="/contact#ContactFooter" id="ContactFooter" accept-charset="UTF-8" class="footer__newsletter newsletter-form">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="newsletter-form__field-wrapper">
+            <div class="field">
+                <input id="NewsletterForm--sections--22531707568402__footer" type="email" name="contact[email]" class="field__input" value="" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email" placeholder="E-mail" required="">
+                <label class="field__label" for="NewsletterForm--sections--22531707568402__footer">E-mail</label>
+                <button type="submit" class="newsletter-form__button field__button" name="commit" id="Subscribe" aria-label="Assinar">Submit</button>
+            </div>
         </div>
-        
-        <br>
-
-        <div class="h-captcha" data-sitekey="10000000-0000-0000-0000-000000000001" data-size="invisible">></div>
-
-        <br>
-        
-        <button type="submit">Enviar Teste</button>
     </form>
+
+    <!-- Simulate the problematic product forms -->
+    <form method="post" action="/cart/add" id="product_form_10235482407186" accept-charset="UTF-8" class="beae-product-form-next beae-product-form--single" enctype="multipart/form-data" data-product_id="1">
+        <input type="hidden" name="id" value="51669798519058">
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <form method="post" action="/cart/add" id="product_form_10235482374418" accept-charset="UTF-8" class="beae-product-form-next beae-product-form--single" enctype="multipart/form-data" data-product_id="1">
+        <input type="hidden" name="id" value="51669798355218">
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <!-- Simulate the JavaScript framework issue -->
+    <script>
+        // This simulates what's happening with the product forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate the framework overriding the id property
+            document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
+                const hiddenInput = form.querySelector('input[name="id"]');
+                if (hiddenInput) {
+                    // This is what's causing the issue - overriding the id property
+                    Object.defineProperty(form, 'id', {
+                        get: function() { return hiddenInput; },
+                        configurable: true
+                    });
+                }
+            });
+        });
+    </script>
     
 
 
