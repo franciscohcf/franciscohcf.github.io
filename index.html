@@ -51,23 +51,17 @@
          <input type="submit" value="Enviar" />
     </form>
 
-<form action="#" method="POST" id="form-test-missing-email-3">
-    <h3>Test 1: Missing Email (Hard Mode)</h3>
-    
-    <label>Name:</label>
-    <input type="text" name="user_name" value="Tester"><br>
-    
-    <!-- 
-      STRATEGY: 
-      1. type="text" (not email)
-      2. name="random_data_123" (no 'email', 'mail', 'contact' keywords)
-      3. No initial value
-    -->
-    <label>Email (Type manually):</label>
-    <input type="text" name="random_data_123" placeholder="Type email here"><br>
-    
-    <button type="submit">NOVO</button>
-</form>
+    <form action="#" method="POST" id="ambiguous-email-form">
+        <h3>Test: Two Email Fields</h3>
+        
+        <label>Referral Email:</label>
+        <input type="email" name="referral_mail" value="friend@example.com">
+        
+        <label>User Email:</label>
+        <input type="email" name="user_mail" value="me@example.com">
+        
+        <button type="submit">Submit</button>
+    </form>
 
     <!-- -->
     <!-- -->
