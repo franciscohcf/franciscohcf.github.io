@@ -51,6 +51,53 @@
          <input type="submit" value="Enviar" />
     </form>
 
+    <form action="#" method="POST" id="rd-error-test-form">
+        
+        <!-- 
+          ERROR TEST 1: TYPE MISMATCH
+          RD Field 'personal_phone' expects a Number/String. 
+          If you map this to a 'Date' field in RD, it triggers "Generic Field Error".
+        -->
+        <div class="form-group error-trigger">
+            <label for="phone_text">1. Type Mismatch (Phone as Text)</label>
+            <input type="text" name="personal_phone" id="phone_text" value="Text instead of Number">
+            <div class="note">Map this to a "Number" or "Date" field in RD to see the "Incompatible Data" error.</div>
+        </div>
+
+        <!-- 
+          ERROR TEST 2: DATA LOSS (LONG KEY)
+          This field name is intentionally weird/long to potentially trigger mapping warnings 
+          or simply to test the "Unmapped Field" warning.
+        -->
+        <div class="form-group">
+            <label for="long_field">2. Unmapped / Complex Field</label>
+            <input type="text" name="custom_field_with_very_long_name_to_test_limits_and_mapping" id="long_field" value="Test Data">
+            <div class="note">Leave this unmapped to test "Data Loss" warnings.</div>
+        </div>
+
+        <!-- 
+          ERROR TEST 3: DUPLICATE NAMES (Ambiguity)
+          Two fields with the same name might confuse the mapper.
+        -->
+        <div class="form-group">
+            <label for="company1">3. Duplicate Name (Company)</label>
+            <input type="text" name="company" id="company1" value="RD Station">
+        </div>
+        
+        <!-- 
+           Valid Email (Required for the form to be captured at all) 
+           To test "Missing Email" error, Change name="email" to name="contact_mail" 
+           and see if RD fails to auto-detect it.
+        -->
+        <div class="form-group">
+            <label for="email">Email (Required for Capture)</label>
+            <input type="email" name="email" id="email" required placeholder="test@example.com">
+            <div class="note">To test "Missing Email Error", rename this input's name attribute to something obscure like "user_identifier".</div>
+        </div>
+
+        <button type="submit">Submit Conversion</button>
+    </form>
+
     <!-- -->
     <!-- -->
     <!-- stagingg -->
