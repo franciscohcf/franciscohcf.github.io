@@ -51,17 +51,17 @@
          <input type="submit" value="Enviar" />
     </form>
 
-    <form action="#" method="POST" id="ambiguous-email-form">
-        <h3>Test: Two Email Fields</h3>
-        
-        <label>Referral Email:</label>
-        <input type="email" name="referral_mail" value="friend@example.com">
-        
-        <label>User Email:</label>
-        <input type="email" name="user_mail" value="me@example.com">
-        
-        <button type="submit">Submit</button>
-    </form>
+<form action="#" method="POST" id="form-test-deleted-field">
+    <h3>Test 3: Deleted Field</h3>
+    <label>Email:</label>
+    <input type="email" name="email" value="test3@example.com"><br>
+    
+    <label>Temporary Field:</label>
+    <!-- Map this, then delete the destination field in RD -->
+    <input type="text" name="field_to_be_deleted" value="Orphan Data"><br>
+    
+    <button type="submit">Submit (Trigger Mapping Error)</button>
+</form>
 
     <!-- -->
     <!-- -->
