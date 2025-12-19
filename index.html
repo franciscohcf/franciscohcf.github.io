@@ -51,16 +51,22 @@
          <input type="submit" value="Enviar" />
     </form>
 
-<form action="#" method="POST" id="form-test-missing-email">
-    <h3>Test 1: Missing Email</h3>
-    <label>Nome:</label>
-    <input type="text" name="name" value="Tester 1"><br>
+<form action="#" method="POST" id="form-test-missing-email-2">
+    <h3>Test 1: Missing Email (Hard Mode)</h3>
     
-    <label>Email (Incorrect Name):</label>
-    <!-- name="contact_x" prevents auto-detection of email -->
-    <input type="text" name="contact_x" value="test1@example.com"><br>
+    <label>Name:</label>
+    <input type="text" name="user_name" value="Tester"><br>
     
-    <button type="submit">Submit (Trigger Email Error)</button>
+    <!-- 
+      STRATEGY: 
+      1. type="text" (not email)
+      2. name="random_data_123" (no 'email', 'mail', 'contact' keywords)
+      3. No initial value
+    -->
+    <label>Email (Type manually):</label>
+    <input type="text" name="random_data_123" placeholder="Type email here"><br>
+    
+    <button type="submit">Submit</button>
 </form>
 
     <!-- -->
